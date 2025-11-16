@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/adminStyle.css" />
+    <style>
+      .loader {
+        display: none;
+        margin: 18px auto 0;
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #1e90ff;
+        border-radius: 50%;
+        width: 46px;
+        height: 46px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <form id="adminLoginForm" class="login-form">
+        <h2>Admin Login</h2>
+
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="abc"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input id="password" placeholder="**********" name="password" type="password" required />
+        </div>
+
+        <div class="input-group">
+          <label for="secretCode">Secret Code</label>
+          <input
+            id="secretCode"
+            name="secretCode"
+            type="password"
+            placeholder="Enter company secret code"
+            required
+          />
+        </div>
+
+        <button class="btn" type="submit">Login</button>
+
+        <div class="loader" id="loader"></div>
+
+        <p
+          id="message"
+          style="text-align: center; color: red; margin-top: 8px"
+        ></p>
+      </form>
+    </div>
+
+    <script src="../JS/adminLogIn.js"></script>
+  </body>
+</html>

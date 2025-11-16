@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Home</title>
+  <link rel="stylesheet" href="../CSS/adminDashboard.css">
+</head>
+<body>
+
+  <header class="header">
+    <h2>Admin Dashboard</h2>
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </header>
+
+  <main class="main-content">
+    <div id="productsContainer" class="products-container"></div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" id="homeBtn">
+      <i class="fa fa-home"></i>
+      <span>Home</span>
+    </div>
+
+    <div class="nav-item center" id="addBtn">
+      <i class="fa fa-plus"></i>
+    </div>
+
+    <div class="nav-item" id="ordersBtn">
+      <i class="fa fa-box"></i>
+      <span>Orders</span>
+    </div>
+  </nav>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script src="../JS/adminHomePage.js"></script>
+  <script src="../JS/nav.js"></script>
+</body>
+</html>
