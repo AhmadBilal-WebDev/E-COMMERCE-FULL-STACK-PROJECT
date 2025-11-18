@@ -6,7 +6,6 @@ body {
   margin: 0;
   background-color: #f4f4f9;
   margin-bottom: 50px;
-
 }
 
 h2,
@@ -228,7 +227,6 @@ button:hover {
   font-weight: 600;
   margin: 0;
   color: #333;
-  
 }
 
 .product-card p {
@@ -349,5 +347,89 @@ button:hover {
 
   .products-container div {
     width: 45%;
+  }
+}
+
+/* =========================================
+   ADMIN ORDERS PAGE
+========================================= */
+section h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 600;
+}
+
+table.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.orders-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+}
+
+.orders-table td {
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.orders-table td img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Action buttons */
+.action-btns button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: 0.3s;
+}
+
+.accept-btn {
+  background-color: #2ed573;
+  padding: 10px;
+}
+
+.accept-btn:hover {
+  background-color: #28c76f;
+}
+
+.reject-btn {
+  background-color: #ff4757;
+  padding: 10px;
+}
+
+.reject-btn:hover {
+  background-color: #e03e50;
+}
+
+@media screen and (max-width: 900px) {
+  .orders-table td img {
+    width: 50px;
+    height: 50px;
+  }
+  .orders-table th,
+  .orders-table td {
+    font-size: 14px;
+    padding: 8px 10px;
   }
 }

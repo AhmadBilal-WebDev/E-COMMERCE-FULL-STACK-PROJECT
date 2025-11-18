@@ -547,12 +547,19 @@ header.navbar h2 {
 
 .order-status.pending {
   background-color: #ffeaa7;
-  color: #e1b12c;
+  color: black;
+  text-align: center;
 }
 
 .order-status.accepted {
   background-color: #55efc4;
-  color: #00b894;
+  color: black;
+  text-align: center;
+}
+.order-status.rejected {
+  background-color: red;
+  color: black;
+  text-align: center;
 }
 
 /* Cancel Button */

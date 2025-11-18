@@ -16,7 +16,6 @@
       <div id="ordersContainer" class="orders-container"></div>
     </main>
 
-    <!-- Bottom Navigation -->
     <nav class="bottom-nav">
       <div class="nav-item" id="homeBtn">
         <i class="fa fa-home"></i>
@@ -33,8 +32,42 @@
       </div>
     </nav>
 
+    <section class="main-content">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Product</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTableBody"></tbody>
+      </table>
+    </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="../JS/"></script>
     <script src="../JS/nav.js"></script>
+
+    <script src="../JS/adminOrderPage.js"></script>
+    <script>
+      document.getElementById("homeBtn").addEventListener("click", () => {
+        window.location.href = "adminHomePage.html";
+      });
+
+      document.getElementById("addBtn").addEventListener("click", () => {
+        window.location.href = "adminAddPage.html";
+      });
+
+      document.getElementById("ordersBtn").addEventListener("click", () => {
+        window.location.href = "adminOrderPage.html";
+      });
+    </script>
   </body>
 </html>
