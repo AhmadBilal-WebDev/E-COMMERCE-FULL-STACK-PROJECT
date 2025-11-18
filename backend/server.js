@@ -9,6 +9,7 @@ const adminRoutes = require("./routes/adminRouter");
 const productRoutes = require("./routes/productRoutes");
 const path = require("path");
 const adminProductRoutes = require("./routes/productRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -26,6 +27,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // serve i
 app.use("/api/products", productRoutes);
 app.use("/api/admin", adminProductRoutes);
 app.use("/uploads", express.static("uploads"));
+app.use("/api/orders", orderRoutes);
 
 app.listen(PORT, () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);

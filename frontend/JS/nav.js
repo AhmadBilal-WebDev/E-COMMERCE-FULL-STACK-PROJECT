@@ -9,3 +9,12 @@ document.getElementById("addBtn").addEventListener("click", () => {
 document.getElementById("ordersBtn").addEventListener("click", () => {
   window.location.href = "adminOrderPage.html";
 });
+
+function goHome() {
+  window.location.href = "userDashboard.html";
+}
+
+function goOrders() {
+  window.location.href = "userOrder.html";
+}
+

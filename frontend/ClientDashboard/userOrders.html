@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Orders</title>
+    <link rel="stylesheet" href="../CSS/userDashboard.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <h2 id="usernameDisplay">My Orders</h2>
+      <div style="display: flex; gap: 10px; align-items: center">
+        <a href="userDashboard.html">
+          <button class="logout-btn" style="background: #00a8ff">
+            Products
+          </button>
+        </a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <section>
+        <h3 class="section-title">My Orders</h3>
+        <div id="ordersContainer" class="orders-grid"></div>
+      </section>
+    </main>
+
+    <script src="../JS/userOrders.js"></script>
+  </body>
+</html>

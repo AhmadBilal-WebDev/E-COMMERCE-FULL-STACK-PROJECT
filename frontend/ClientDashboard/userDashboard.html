@@ -1,24 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Dashboard</title>
-  <link rel="stylesheet" href="../CSS/userDashboard.css" />
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../CSS/userDashboard.css" />
+  </head>
 
-<body>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <h2 id="usernameDisplay">Welcome</h2>
+      <div style="display: flex; gap: 10px; align-items: center">
+        <a href="userOrders.html" style="text-decoration: none">
+          <button
+            id="viewOrdersBtn"
+            class="logout-btn"
+            style="background: #00a8ff"
+          >
+            My Orders
+          </button>
+        </a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </header>
 
-  <header class="navbar">
-    <h2 id="usernameDisplay">Welcome</h2>
-    <button id="logoutBtn" class="logout-btn">Logout</button>
-  </header>
+    <!-- MAIN CONTAINER -->
+    <main class="main-container">
+      <!-- ===== HOME SECTION ===== -->
+      <section id="homeSection">
+        <h3 class="section-title">All Products</h3>
+        <div id="userProductsContainer" class="products-grid"></div>
+      </section>
+    </main>
 
-  <main class="main-container">
-    <h3 class="section-title">All Products</h3>
-    <div id="userProductsContainer" class="products-grid"></div>
-  </main>
+    <!-- 📌 PRODUCT POPUP SCREEN -->
+    <div id="productPopup" class="popup-overlay" aria-hidden="true">
+      <div class="popup-box">
+        <button id="closePopup" class="close-btn" aria-label="Close">✖</button>
 
-  <script src="../JS/userDashboard.js"></script>
-</body>
+        <img id="popupImage" src="" class="popup-img" alt="product image" />
+
+        <h2 id="popupName"></h2>
+        <p id="popupDesc"></p>
+        <h3 id="popupPrice"></h3>
+
+        <!-- Size selector (example) -->
+        <div
+          style="
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+          "
+        >
+          <label><input type="radio" name="size" value="S" /> S</label>
+          <label><input type="radio" name="size" value="M" /> M</label>
+          <label><input type="radio" name="size" value="L" /> L</label>
+          <label><input type="radio" name="size" value="XL" /> XL</label>
+        </div>
+
+        <!-- Quantity Selector -->
+        <div class="quantity-container" style="margin-top: 12px">
+          <button id="decreaseQty" class="quantity-btn">-</button>
+          <span id="quantityDisplay" class="quantity-display">1</span>
+          <button id="increaseQty" class="quantity-btn">+</button>
+        </div>
+
+        <!-- Add to Cart -->
+        <button id="addToCartBtn" class="add-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <script src="../JS/userDashboard.js"></script>
+  </body>
 </html>
