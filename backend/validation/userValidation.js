@@ -1,6 +1,5 @@
 const Joi = require("joi");
 
-// 🟢 Signup Validation Middleware
 const signUpValidation = (req, res, next) => {
   const schema = Joi.object({
     name: Joi.string().min(3).max(20).required().messages({

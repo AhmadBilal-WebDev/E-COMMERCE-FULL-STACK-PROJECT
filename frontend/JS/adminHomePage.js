@@ -1,3 +1,21 @@
+// ===== AUTH CHECK =====
+const adminData = localStorage.getItem("admin");
+if (!adminData) {
+  window.location.href = "adminLogin.html";
+}
+
+// ===== LOGOUT =====
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (!confirmLogout) return;
+    localStorage.removeItem("admin");
+    window.location.href = "adminLogin.html";
+  });
+}
+
+// ===== FETCH PRODUCTS =====
 const productsContainer = document.getElementById("productsContainer");
 
 async function fetchProducts() {
@@ -22,13 +40,12 @@ async function fetchProducts() {
         </div>
       `;
 
-      // Attach Delete event
-      const deleteBtn = div.querySelector(".delete-btn");
-      deleteBtn.addEventListener("click", () => deleteProduct(product._id));
-
-      // Attach Edit event
-      const editBtn = div.querySelector(".edit-btn");
-      editBtn.addEventListener("click", () => editProduct(product._id));
+      div
+        .querySelector(".delete-btn")
+        .addEventListener("click", () => deleteProduct(product._id));
+      div
+        .querySelector(".edit-btn")
+        .addEventListener("click", () => editProduct(product._id));
 
       productsContainer.appendChild(div);
     });
@@ -38,27 +55,21 @@ async function fetchProducts() {
   }
 }
 
-// DELETE PRODUCT
 async function deleteProduct(id) {
-  const confirmDelete = confirm("Are you sure you want to delete this product?");
-  if (!confirmDelete) return;
-
+  if (!confirm("Are you sure you want to delete this product?")) return;
   try {
     await fetch(`http://localhost:5000/api/products/${id}`, {
       method: "DELETE",
     });
-    fetchProducts(); // Refresh products
+    fetchProducts();
   } catch (err) {
     console.error(err);
     alert("Failed to delete product");
   }
 }
 
-// EDIT PRODUCT
 function editProduct(id) {
-  // Redirect to adminEditPage with query param
   window.location.href = `adminEditPage.html?id=${id}`;
 }
 
-// Initial fetch
 fetchProducts();

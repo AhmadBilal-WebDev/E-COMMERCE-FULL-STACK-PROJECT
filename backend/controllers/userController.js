@@ -1,12 +1,10 @@
 const bcrypt = require("bcrypt");
 const userModel = require("../models/userModel");
 
-// User Signup
 const signUp = async (req, res) => {
   try {
     const { name, email, phone, password } = req.body;
 
-    // Check email
     const existingEmail = await userModel.findOne({ email });
     if (existingEmail) {
       return res.status(401).json({
@@ -16,7 +14,6 @@ const signUp = async (req, res) => {
       });
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new userModel({
@@ -35,7 +32,6 @@ const signUp = async (req, res) => {
   }
 };
 
-// User Login
 const logIn = async (req, res) => {
   try {
     const { email, password } = req.body;

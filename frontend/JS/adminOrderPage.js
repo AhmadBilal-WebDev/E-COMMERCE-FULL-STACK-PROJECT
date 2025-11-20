@@ -1,4 +1,25 @@
-// ===== Fetch and display orders =====
+// ===== AUTH CHECK =====
+const adminData = localStorage.getItem("admin");
+if (!adminData) {
+  // Agar admin login nahi hai → redirect login page
+  window.location.href = "adminLogin.html";
+}
+
+// ===== LOGOUT =====
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (!confirmLogout) return;
+
+    // Clear admin session
+    localStorage.removeItem("admin");
+
+    // Redirect to login
+    window.location.href = "adminLogin.html";
+  });
+}
+
 const ordersTableBody = document.getElementById("ordersTableBody");
 
 async function fetchOrders() {
@@ -10,6 +31,14 @@ async function fetchOrders() {
 
     orders.forEach((order, index) => {
       const tr = document.createElement("tr");
+
+      // Set row color based on status
+      const bgColor =
+        order.status === "Accepted" || order.status === "Rejected"
+          ? "#d3d3d3" // light gray
+          : "#ffffff"; // white
+
+      tr.style.backgroundColor = bgColor;
 
       tr.innerHTML = `
         <td>${index + 1}</td>
@@ -67,13 +96,21 @@ async function updateOrderStatus(orderId, status) {
 
     const data = await res.json();
     if (data.success) {
-      // Update status cell in table
-      document.getElementById(`status-${orderId}`).innerText = status;
+      // Update status cell
+      const statusCell = document.getElementById(`status-${orderId}`);
+      statusCell.innerText = status;
 
-      // Disable buttons accordingly
+      // Update row color
       const row = document
         .querySelector(`button[data-id='${orderId}']`)
         .closest("tr");
+      if (status === "Accepted" || status === "Rejected") {
+        row.style.backgroundColor = "#d3d3d3"; // gray
+      } else {
+        row.style.backgroundColor = "#ffffff"; // white
+      }
+
+      // Disable buttons accordingly
       if (status === "Accepted") {
         row.querySelector(".accept-btn").disabled = true;
         row.querySelector(".reject-btn").disabled = false;

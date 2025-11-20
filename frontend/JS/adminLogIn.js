@@ -1,3 +1,11 @@
+// ===== CHECK IF ADMIN ALREADY LOGGED IN =====
+const adminData = localStorage.getItem("admin");
+if (adminData) {
+  // Admin already logged in → redirect to dashboard
+  window.location.href = "adminHomePage.html";
+}
+
+// ===== LOGIN FORM =====
 const form = document.getElementById("adminLoginForm");
 const loader = document.getElementById("loader");
 const messageEl = document.getElementById("message");

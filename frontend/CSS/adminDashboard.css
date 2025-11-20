@@ -1,6 +1,3 @@
-/* =========================================
-   GLOBAL STYLES
-========================================= */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -13,9 +10,6 @@ h3 {
   margin: 0;
 }
 
-/* =========================================
-   HEADER
-========================================= */
 .header {
   background-color: #4b7bec;
   color: white;
@@ -36,9 +30,6 @@ h3 {
   font-weight: 500;
 }
 
-/* =========================================
-   MAIN CONTENT
-========================================= */
 .main-content {
   padding: 20px;
   display: flex;
@@ -46,9 +37,6 @@ h3 {
   align-items: flex-start;
 }
 
-/* =========================================
-   ADMIN ADD PRODUCT PAGE
-========================================= */
 #addProductForm {
   width: 60vw;
   max-width: 450px;
@@ -108,9 +96,6 @@ h3 {
   background-color: #e03e50;
 }
 
-/* =========================================
-   ADMIN EDIT PRODUCT PAGE
-========================================= */
 #editProductForm {
   width: 60vw;
   max-width: 450px;
@@ -170,9 +155,6 @@ h3 {
   background-color: #e03e50;
 }
 
-/* =========================================
-   BUTTONS
-========================================= */
 button {
   cursor: pointer;
   border-radius: 5px;
@@ -185,9 +167,6 @@ button:hover {
   opacity: 0.9;
 }
 
-/* =========================================
-   PRODUCTS STYLING (ADMIN HOME)
-========================================= */
 .products-container {
   display: flex;
   flex-wrap: wrap;
@@ -242,7 +221,6 @@ button:hover {
   display: block;
 }
 
-/* Buttons inside card */
 .product-buttons {
   display: flex;
   justify-content: space-between;
@@ -278,18 +256,12 @@ button:hover {
   background-color: #e03e50;
 }
 
-/* =========================================
-   ORDERS PAGE
-========================================= */
 .main-content p {
   font-size: 14px;
   color: #333;
   margin-top: 15px;
 }
 
-/* =========================================
-   BOTTOM NAVIGATION
-========================================= */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -335,9 +307,6 @@ button:hover {
   color: #4b7bec;
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
 @media screen and (max-width: 600px) {
   #addProductForm,
   #editProductForm {
@@ -350,9 +319,6 @@ button:hover {
   }
 }
 
-/* =========================================
-   ADMIN ORDERS PAGE
-========================================= */
 section h3 {
   margin-bottom: 15px;
   color: #333;
@@ -392,7 +358,6 @@ table.orders-table {
   border-radius: 8px;
 }
 
-/* Action buttons */
 .action-btns button {
   padding: 6px 10px;
   border-radius: 6px;

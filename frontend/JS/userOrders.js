@@ -10,8 +10,12 @@ if (userData) {
   }
 }
 
-const username =
-  user?.name || localStorage.getItem("username") || user?.username;
+const username = user?.name || user?.username;
+
+// Redirect if no user
+if (!username) {
+  window.location.href = "logIn.html";
+}
 
 // ---------- LOGOUT ----------
 document.getElementById("logoutBtn").addEventListener("click", () => {
@@ -27,20 +31,20 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
 const ordersContainer = document.getElementById("ordersContainer");
 
 async function getUserOrders() {
-  if (!username) {
-    ordersContainer.innerHTML =
-      "<p style='text-align:center;'>No user found. Please login.</p>";
-    return;
-  }
-
   try {
     const res = await fetch(
       `http://localhost:5000/api/orders/get?username=${encodeURIComponent(
         username
       )}`
     );
+
     if (!res.ok) throw new Error("Failed to fetch orders");
-    const orders = await res.json();
+
+    let orders = await res.json();
+
+    // Filter just in case backend returns more than this user
+    orders = orders.filter((order) => order.username === username);
+
     renderOrders(orders);
   } catch (err) {
     console.error("Error fetching orders:", err);
@@ -63,12 +67,16 @@ function renderOrders(orders) {
     div.classList.add("order-card");
 
     div.innerHTML = `
-      <img src="${order.image || "https://via.placeholder.com/150"}" alt="${order.productName}" />
+      <img src="${order.image || "https://via.placeholder.com/150"}" alt="${
+      order.productName
+    }" />
       <div class="order-details">
         <h4>${order.productName}</h4>
         <p>Size: ${order.size || "N/A"}</p>
         <p>Quantity: ${order.quantity || 1}</p>
-        <p>Price: $${Number((order.price || 0) * (order.quantity || 1)).toFixed(2)}</p>
+        <p>Price: $${Number((order.price || 0) * (order.quantity || 1)).toFixed(
+          2
+        )}</p>
         <span class="order-status ${order.status?.toLowerCase() || "pending"}">
           ${order.status || "Pending"}
         </span>
@@ -104,7 +112,6 @@ function renderOrders(orders) {
     });
   });
 }
-
 
 // ---------- INITIAL FETCH ----------
 getUserOrders();

@@ -1,17 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Dashboard</title>
     <link rel="stylesheet" href="../CSS/userDashboard.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background: #f4f4f9;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        background: #1e90ff;
+        color: white;
+      }
+
+      .logout-btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .logout-btn:hover {
+        opacity: 0.8;
+      }
+
+      .main-container {
+        padding: 20px;
+      }
+
+      .section-title {
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 10px 0;
+      }
+
+      .product-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .product-card img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .popup-box {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        max-width: 400px;
+        width: 90%;
+        position: relative;
+        text-align: center;
+      }
+
+      .popup-img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        background: transparent;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      .quantity-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .quantity-btn {
+        padding: 5px 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .quantity-display {
+        min-width: 25px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .add-cart-btn {
+        margin-top: 12px;
+        padding: 10px 20px;
+        background: #28a745;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .add-cart-btn:hover {
+        opacity: 0.85;
+      }
+    </style>
   </head>
 
   <body>
-    <!-- NAVBAR -->
     <header class="navbar">
       <h2 id="usernameDisplay">Welcome</h2>
       <div style="display: flex; gap: 10px; align-items: center">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search products..."
+          style="
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            width: 200px;
+          "
+        />
         <a href="userOrders.html" style="text-decoration: none">
           <button
             id="viewOrdersBtn"
@@ -25,27 +177,21 @@
       </div>
     </header>
 
-    <!-- MAIN CONTAINER -->
     <main class="main-container">
-      <!-- ===== HOME SECTION ===== -->
       <section id="homeSection">
         <h3 class="section-title">All Products</h3>
         <div id="userProductsContainer" class="products-grid"></div>
       </section>
     </main>
 
-    <!-- 📌 PRODUCT POPUP SCREEN -->
     <div id="productPopup" class="popup-overlay" aria-hidden="true">
       <div class="popup-box">
         <button id="closePopup" class="close-btn" aria-label="Close">✖</button>
-
-        <img id="popupImage" src="" class="popup-img" alt="product image" />
-
+        <img id="popupImage" class="popup-img" src="" alt="Product Image" />
         <h2 id="popupName"></h2>
         <p id="popupDesc"></p>
         <h3 id="popupPrice"></h3>
 
-        <!-- Size selector (example) -->
         <div
           style="
             margin-top: 10px;
@@ -61,14 +207,12 @@
           <label><input type="radio" name="size" value="XL" /> XL</label>
         </div>
 
-        <!-- Quantity Selector -->
-        <div class="quantity-container" style="margin-top: 12px">
+        <div class="quantity-container">
           <button id="decreaseQty" class="quantity-btn">-</button>
           <span id="quantityDisplay" class="quantity-display">1</span>
           <button id="increaseQty" class="quantity-btn">+</button>
         </div>
 
-        <!-- Add to Cart -->
         <button id="addToCartBtn" class="add-cart-btn">Add to Cart</button>
       </div>
     </div>

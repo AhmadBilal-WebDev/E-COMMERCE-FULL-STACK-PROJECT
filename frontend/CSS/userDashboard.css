@@ -1,4 +1,3 @@
-/* ===== General Styles ===== */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -8,7 +7,6 @@ body {
   margin-bottom: 60px;
 }
 
-/* ===== Header ===== */
 header.navbar {
   display: flex;
   justify-content: space-between;
@@ -42,7 +40,6 @@ header.navbar h2 {
   transform: scale(1.05);
 }
 
-/* ===== Main Container ===== */
 .main-container {
   padding: 30px 25px;
 }
@@ -54,15 +51,16 @@ header.navbar h2 {
   color: #1e272e;
 }
 
-/* ===== Products Grid ===== */
 .products-grid {
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 20px;
   padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-/* ===== Product Card ===== */
 .product-card {
   background: #fff;
   border-radius: 12px;
@@ -82,7 +80,6 @@ header.navbar h2 {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Product Image */
 .product-card img {
   width: 100%;
   height: 140px;
@@ -91,7 +88,6 @@ header.navbar h2 {
   margin-bottom: 12px;
 }
 
-/* Product Name */
 .product-card h3 {
   font-size: 16px;
   font-weight: 600;
@@ -99,7 +95,6 @@ header.navbar h2 {
   margin: 5px 0;
 }
 
-/* Product Description */
 .product-card p {
   font-size: 13px;
   color: #636e72;
@@ -109,14 +104,12 @@ header.navbar h2 {
   margin-bottom: 8px;
 }
 
-/* Product Price */
 .product-card strong {
   font-size: 15px;
   font-weight: 700;
   color: #44bd32;
 }
 
-/* Optional Mini Cart Button */
 .product-card .mini-cart-btn {
   position: absolute;
   bottom: 10px;
@@ -135,7 +128,6 @@ header.navbar h2 {
   display: block;
 }
 
-/* ===== Loader ===== */
 .loader {
   display: flex;
   justify-content: center;
@@ -161,7 +153,6 @@ header.navbar h2 {
   }
 }
 
-/* ===== Responsive ===== */
 @media screen and (max-width: 768px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -187,7 +178,6 @@ header.navbar h2 {
   }
 }
 
-/* ===== Bottom Navigation ===== */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -224,7 +214,6 @@ header.navbar h2 {
   color: #0097e6;
 }
 
-/* ===== PRODUCT POPUP SCREEN ===== */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -300,7 +289,6 @@ header.navbar h2 {
   margin-bottom: 5px;
 }
 
-/* ✖ Close Button */
 .close-btn {
   position: absolute;
   right: 15px;
@@ -324,7 +312,6 @@ header.navbar h2 {
   transform: scale(1.1);
 }
 
-/* ===== Popup Quantity & Add to Cart ===== */
 .popup-quantity {
   display: flex;
   justify-content: center;
@@ -375,14 +362,12 @@ header.navbar h2 {
   background-color: #3c9c28;
 }
 
-/* ===== Orders Grid (Horizontal Cards) ===== */
 #ordersContainer {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-/* Each Order Card */
 .order-card {
   display: flex;
   align-items: center;
@@ -398,7 +383,6 @@ header.navbar h2 {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Product Thumbnail */
 .order-card img {
   width: 80px;
   height: 80px;
@@ -407,11 +391,10 @@ header.navbar h2 {
   margin-right: 15px;
 }
 
-/* Order Details Container */
 .order-details {
   display: flex;
   flex-direction: column;
-  flex: 1; /* take available space */
+  flex: 1;
 }
 
 .order-details h4 {
@@ -427,7 +410,6 @@ header.navbar h2 {
   margin: 2px 0;
 }
 
-/* Order Status */
 .order-status {
   font-weight: 600;
   padding: 4px 8px;
@@ -447,7 +429,6 @@ header.navbar h2 {
   color: #00b894;
 }
 
-/* Cancel Button */
 .cancel-btn {
   background: #ff4757;
   color: #fff;
@@ -463,7 +444,6 @@ header.navbar h2 {
   background: #e84118;
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   .order-card {
     flex-direction: column;
@@ -480,7 +460,6 @@ header.navbar h2 {
   }
 }
 
-/* ===== Orders Grid ===== */
 .orders-grid {
   display: flex;
   flex-direction: column;
@@ -488,7 +467,6 @@ header.navbar h2 {
   padding: 10px 0;
 }
 
-/* Each Order Card (Horizontal) */
 .order-card {
   display: flex;
   align-items: center;
@@ -504,7 +482,6 @@ header.navbar h2 {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Product Thumbnail */
 .order-card img {
   width: 100px;
   height: 100px;
@@ -514,7 +491,6 @@ header.navbar h2 {
   flex-shrink: 0;
 }
 
-/* Order Details */
 .order-details {
   display: flex;
   flex-direction: column;
@@ -535,7 +511,6 @@ header.navbar h2 {
   margin: 0;
 }
 
-/* Order Status */
 .order-status {
   font-weight: 600;
   font-size: 13px;
@@ -562,7 +537,6 @@ header.navbar h2 {
   text-align: center;
 }
 
-/* Cancel Button */
 .cancel-btn {
   background: #ff4757;
   color: #fff;
@@ -579,7 +553,6 @@ header.navbar h2 {
   background: #e84118;
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   .order-card {
     flex-direction: column;

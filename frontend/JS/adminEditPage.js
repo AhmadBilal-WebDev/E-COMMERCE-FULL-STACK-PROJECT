@@ -1,6 +1,28 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
 
+// ===== AUTH CHECK =====
+const adminData = localStorage.getItem("admin");
+if (!adminData) {
+  // Agar admin login nahi hai → redirect login page
+  window.location.href = "adminLogin.html";
+}
+
+// ===== LOGOUT =====
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (!confirmLogout) return;
+
+    // Clear admin session
+    localStorage.removeItem("admin");
+
+    // Redirect to login
+    window.location.href = "adminLogin.html";
+  });
+}
+
 const editForm = document.getElementById("editProductForm");
 const nameInput = document.getElementById("name");
 const priceInput = document.getElementById("price");
@@ -8,7 +30,6 @@ const imageInput = document.getElementById("image");
 const descInput = document.getElementById("description");
 const cancelBtn = document.getElementById("cancelEdit");
 
-// Fetch product details
 async function fetchProduct() {
   try {
     const res = await fetch(`http://localhost:5000/api/products/${productId}`);
@@ -26,7 +47,6 @@ async function fetchProduct() {
 
 fetchProduct();
 
-// Save edited product
 editForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
@@ -53,7 +73,6 @@ editForm.addEventListener("submit", async (e) => {
   }
 });
 
-// Cancel button
 cancelBtn.addEventListener("click", () => {
   window.location.href = "adminHomePage.html";
 });

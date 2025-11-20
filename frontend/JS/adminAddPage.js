@@ -1,10 +1,32 @@
 const productsContainer = document.getElementById("productsContainer");
 
-// Fetch all products
+// ===== AUTH CHECK =====
+const adminData = localStorage.getItem("admin");
+if (!adminData) {
+  // Agar admin login nahi hai → redirect login page
+  window.location.href = "adminLogin.html";
+}
+
+// ===== LOGOUT =====
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (!confirmLogout) return;
+
+    // Clear admin session
+    localStorage.removeItem("admin");
+
+    // Redirect to login
+    window.location.href = "adminLogin.html";
+  });
+}
+
+
 const addForm = document.getElementById("addProductForm");
 
 addForm.addEventListener("submit", async (e) => {
-  e.preventDefault(); 
+  e.preventDefault();
 
   const name = document.getElementById("name").value;
   const price = document.getElementById("price").value;
@@ -20,9 +42,8 @@ addForm.addEventListener("submit", async (e) => {
 
     if (res.ok) {
       alert("Product added successfully!");
-      addForm.reset(); // clear form
-      // Optionally redirect to home page:
-      // window.location.href = "adminHomePage.html";
+      addForm.reset();
+      window.location.href = "adminHomePage.html";
     } else {
       alert("Failed to add product");
     }
@@ -31,7 +52,6 @@ addForm.addEventListener("submit", async (e) => {
     alert("Error adding product");
   }
 });
-
 
 // Delete product
 async function deleteProduct(id) {

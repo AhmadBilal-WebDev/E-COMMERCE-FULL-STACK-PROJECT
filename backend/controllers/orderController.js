@@ -15,14 +15,14 @@ exports.createOrder = async (req, res) => {
 
     const order = new Order({
       username,
-      email: user.email, // save email
-      phone: user.phone, // save phone
+      email: user.email, 
+      phone: user.phone, 
       productId,
       productName,
       image,
       size,
       price,
-      status: "Pending", // default status
+      status: "Pending",
     });
 
     await order.save();
@@ -32,7 +32,6 @@ exports.createOrder = async (req, res) => {
   }
 };
 
-// GET ALL ORDERS (for admin)
 exports.getOrders = async (req, res) => {
   try {
     const orders = await Order.find();
@@ -42,11 +41,10 @@ exports.getOrders = async (req, res) => {
   }
 };
 
-// UPDATE ORDER STATUS (accept/reject)
 exports.updateOrderStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body; // 'Accepted' or 'Rejected'
+    const { status } = req.body;
 
     const order = await Order.findByIdAndUpdate(id, { status }, { new: true });
 
@@ -60,7 +58,6 @@ exports.updateOrderStatus = async (req, res) => {
   }
 };
 
-// DELETE ORDER
 exports.deleteOrder = async (req, res) => {
   try {
     await Order.findByIdAndDelete(req.params.id);
